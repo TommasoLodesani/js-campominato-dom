@@ -69,6 +69,9 @@ myButton.addEventListener("click",
                     divEle.append(arrItem);
                     if(arrayBomb.includes(arrItem)){
                         this.classList.add("clicked-red");
+                        alert("Hai perso");
+                        myGrid.innerHTML = "";
+
                     } else{
                         this.classList.add("clicked-blue");
                     }
