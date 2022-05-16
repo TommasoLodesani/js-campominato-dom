@@ -55,7 +55,10 @@ myButton.addEventListener("click",
         const arrayBomb = createRandUniqueNumArray(16, 1, 16);
         console.log(arrayBomb);
 
+
         let checkBomba = false;
+
+        let countNotBomb = 0;
 
 
         for (let i = 0; i < myNewArrRandom.length; i++) {
@@ -74,7 +77,7 @@ myButton.addEventListener("click",
 
                         let bomba = arrayBomb[j];
                         // console.log("elemento array bomb" + arrayBomb[j]);
-
+                        debugger;
                         if (bomba == arrItem) {
                             this.classList.add("clicked-red");
                             
@@ -83,16 +86,20 @@ myButton.addEventListener("click",
                         } else{
                             this.classList.add("clicked-blue");
 
+                            countNotBomb += 1;
+                            console.log(countNotBomb);
+
+                            // checkBomba = false;
+
                         }
                     }
 
                     if (checkBomba == true){
                         alert("Hai perso")
-                        
+
                     }else{
 
                     }
-
 
 
 
