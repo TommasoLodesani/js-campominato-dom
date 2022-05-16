@@ -52,7 +52,10 @@ myButton.addEventListener("click",
         const myNewArrRandom = createRandUniqueNumArray(nCelle, 1, nCelle);
         console.log(myNewArrRandom);
 
-       
+        const arrayBomb = createRandUniqueNumArray(16, 1, 16);
+        console.log(arrayBomb);
+
+
         for (let i = 0; i < myNewArrRandom.length ; i++) {
 
 
@@ -64,10 +67,10 @@ myButton.addEventListener("click",
 
                 function () {
                     divEle.append(arrItem);
-                    if( arrItem % 2 === 0){
-                        this.classList.add("clicked-green");
-                    } else{
+                    if(arrayBomb.includes(arrItem)){
                         this.classList.add("clicked-red");
+                    } else{
+                        this.classList.add("clicked-blue");
                     }
                 }
             )
