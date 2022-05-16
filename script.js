@@ -73,46 +73,30 @@ myButton.addEventListener("click",
                 function () {
                     divEle.append(arrItem);
 
-                    for (let j = 1; j < arrayBomb.length; j++) {
+                    if(arrayBomb.includes(arrItem)) {
+                        this.classList.add("clicked-red");
+                        // alert("Hai perso");
+                        // myGrid.innerHTML = "";
 
-                        let bomba = arrayBomb[j];
-                        // console.log("elemento array bomb" + arrayBomb[j]);
-                        debugger;
-                        if (bomba == arrItem) {
-                            this.classList.add("clicked-red");
-                            
-                            checkBomba = true;
+                        checkBomba = true;
 
-                        } else{
-                            this.classList.add("clicked-blue");
+                    }else {
+                        this.classList.add("clicked-blue");
+                        countNotBomb += 1;
 
-                            countNotBomb += 1;
-                            console.log(countNotBomb);
-
-                            // checkBomba = false;
-
-                        }
+                        console.log(countNotBomb);
                     }
 
-                    if (checkBomba == true){
-                        alert("Hai perso")
-
-                    }else{
-
-                    }
-
-
-
-                    // if (arrayBomb.includes(arrItem)) {
-                    //     this.classList.add("clicked-red");
-                    //     alert("Hai perso");
-                    //     // myGrid.innerHTML = "";
-
-                    // } else {
-                    //     this.classList.add("clicked-blue");
-                    // }
                 }
+
+                if(checkBomba == true){
+                    alert("Hai perso! Il tuo punteggio è di: " + countNotBomb);
+                }
+
+               
             )
+
+           
 
             myGrid.append(divEle);
         }
