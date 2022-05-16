@@ -29,34 +29,36 @@ myButton.addEventListener("click",
 
         // settare le varibile a seconda del livello
 
-        switch (chooseLevel){
+        switch (chooseLevel) {
 
             case 0:
             default:
-            nCelle = 100;
-            classCelle = "square_10";
-            break;
+                nCelle = 100;
+                classCelle = "square_10";
+                break;
 
             case 1:
-            nCelle = 81;
-            classCelle = "square_9";
-            break;
+                nCelle = 81;
+                classCelle = "square_9";
+                break;
 
             case 2:
-            nCelle = 49;
-            classCelle = "square_7";
-            break;
+                nCelle = 49;
+                classCelle = "square_7";
+                break;
 
         }
-       
+
         const myNewArrRandom = createRandUniqueNumArray(nCelle, 1, nCelle);
         console.log(myNewArrRandom);
 
         const arrayBomb = createRandUniqueNumArray(16, 1, 16);
         console.log(arrayBomb);
 
+        let checkBomba = false;
 
-        for (let i = 0; i < myNewArrRandom.length ; i++) {
+
+        for (let i = 0; i < myNewArrRandom.length; i++) {
 
 
             const divEle = createMyElement(classCelle);
@@ -67,20 +69,47 @@ myButton.addEventListener("click",
 
                 function () {
                     divEle.append(arrItem);
-                    if(arrayBomb.includes(arrItem)){
-                        this.classList.add("clicked-red");
-                        alert("Hai perso");
-                        myGrid.innerHTML = "";
 
-                    } else{
-                        this.classList.add("clicked-blue");
+                    for (let j = 1; j < arrayBomb.length; j++) {
+
+                        let bomba = arrayBomb[j];
+                        // console.log("elemento array bomb" + arrayBomb[j]);
+
+                        if (bomba == arrItem) {
+                            this.classList.add("clicked-red");
+                            
+                            checkBomba = true;
+
+                        } else{
+                            this.classList.add("clicked-blue");
+
+                        }
                     }
+
+                    if (checkBomba == true){
+                        alert("Hai perso")
+                        
+                    }else{
+
+                    }
+
+
+
+
+                    // if (arrayBomb.includes(arrItem)) {
+                    //     this.classList.add("clicked-red");
+                    //     alert("Hai perso");
+                    //     // myGrid.innerHTML = "";
+
+                    // } else {
+                    //     this.classList.add("clicked-blue");
+                    // }
                 }
             )
 
             myGrid.append(divEle);
         }
-        
+
 
     }
 
@@ -89,11 +118,11 @@ myButton.addEventListener("click",
 
 // funzioni
 
-function createRandUniqueNumArray (numItems, min, max){
+function createRandUniqueNumArray(numItems, min, max) {
     const arrInt = [];
-    while(arrInt.length < numItems){
+    while (arrInt.length < numItems) {
         let randNumInt = getRandomNumb(min, max);
-        if(!arrInt.includes(randNumInt)){
+        if (!arrInt.includes(randNumInt)) {
             arrInt.push(randNumInt);
         }
     }
