@@ -52,17 +52,13 @@ myButton.addEventListener("click",
         const myNewArrRandom = createRandUniqueNumArray(nCelle, 1, nCelle);
         console.log(myNewArrRandom);
 
-        const arrayBomb = createRandUniqueNumArray(16, 1, 16);
+        const arrayBomb = createRandUniqueNumArray(16, 1, nCelle);
         console.log(arrayBomb);
 
-
-        let checkBomba = false;
-
-        let countNotBomb = 0;
+        let countNotBomb = 0; 
 
 
         for (let i = 0; i < myNewArrRandom.length; i++) {
-
 
             const divEle = createMyElement(classCelle);
 
@@ -70,30 +66,28 @@ myButton.addEventListener("click",
 
             divEle.addEventListener("click",
 
-                function () {
+                function() {
                     divEle.append(arrItem);
 
                     if(arrayBomb.includes(arrItem)) {
                         this.classList.add("clicked-red");
-                        // alert("Hai perso");
+                        console.log("Hai perso! il tuo punteggio è di: " + countNotBomb);
                         // myGrid.innerHTML = "";
 
-                        checkBomba = true;
 
                     }else {
                         this.classList.add("clicked-blue");
-                        countNotBomb += 1;
 
                         console.log(countNotBomb);
+
+                        countNotBomb ++;
+
+                        
                     }
 
                 }
 
-                if(checkBomba == true){
-                    alert("Hai perso! Il tuo punteggio è di: " + countNotBomb);
-                }
-
-               
+                
             )
 
            
